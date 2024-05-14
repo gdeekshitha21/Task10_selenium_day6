@@ -1,0 +1,26 @@
+from selenium import webdriver
+import time
+
+# Initialize Chrome WebDriver
+driver = webdriver.Chrome()
+
+# Open the Instagram profile URL
+driver.get("https://www.instagram.com/guviofficial/")
+
+time.sleep(5)
+
+# Find the followers and following elements using relative XPATH
+followers_element = driver.find_element_by_xpath("//a[@href='/guviofficial/followers/']/span")
+following_element = driver.find_element_by_xpath("//a[@href='/guviofficial/following/']/span")
+
+# Extract the text containing the number of followers and following
+
+followers_count = followers_element.get_attribute('title')
+following_count = following_element.get_attribute('title')
+
+# Print the total number of followers and following
+print("Followers:", followers_count)
+print("Following:", following_count)
+
+# Close the browser
+driver.quit()
